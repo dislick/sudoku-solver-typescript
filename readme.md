@@ -1,10 +1,11 @@
 # Sudoku Solver
 
-This repository contains a sudoku solver which implements a backtracking algorithm. The algorithm can be used in any JavaScript environment.
+This is a sudoku solver using a backtracking algorithm. It is written in TypeScript and runs in every JavaScript environment. Please note that it runs ~2.5 times faster when compiling to ES5 because of the destructuring assignment.
 
 ## Run
 
 ```
+npm install
 gulp build
 node dest/run.js
 ```
