@@ -2,14 +2,6 @@
 
 This is a sudoku solver using a backtracking algorithm. It is written in TypeScript and runs in every JavaScript environment. Please note that it runs ~2.5 times faster when compiling to ES5 because of a destructuring assignment.
 
-## Run
-
-```
-npm install
-gulp build
-node dest/run.js
-```
-
 ## Usage
 
 ```TypeScript
@@ -21,6 +13,14 @@ let backtracker = new SudokuBacktracker(grid);
 let isSolvable = backtracker.solve();
 
 // solved sudoku can now be found in `backtracker.sudoku`
+```
+
+## Run
+
+```
+npm install
+gulp build
+node dest/run.js
 ```
 
 ### Output
