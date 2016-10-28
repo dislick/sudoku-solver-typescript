@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var typescript = require('gulp-typescript');
-var exec = require('child_process').exec;
 
 var config = {
   src: 'src/**/*.ts',
