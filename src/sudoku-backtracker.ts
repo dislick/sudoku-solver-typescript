@@ -1,14 +1,31 @@
 import * as _ from 'lodash';
 
+/**
+ * Implements a backtracking algorithm to solve 9x9 sudokus.
+ */
 export class SudokuBacktracker {
   private grid: number[][];
   private iterations: number = 0;
 
   constructor(grid: number[][]) {
+    // Clone the given array so we don't override the unsolved puzzle 
     this.grid = _.cloneDeep(grid);
   }
 
-  private findEmptyLocation(): number[] {
+  get sudoku() {
+    return this.grid;
+  }
+
+  get neededIterations() {
+    return this.iterations;
+  }
+
+  /**
+   * Finds the first empty cell in this.grid and returns its coordinations in an
+   * array where the first entry represents the row (x) and the second entry the
+   * column (y).
+   */
+  private findEmptyCell(): number[] {
     let coords = [-1, -1];
     for (let x = 0; x < 9; x++) {
       for (let y = 0; y < 9; y++) {
@@ -22,6 +39,9 @@ export class SudokuBacktracker {
     return coords;
   }
 
+  /**
+   * Checks if a number is allowed to be used in a given row.
+   */
   private usedInRow(row, number): boolean {
     for (let x = 0; x < 9; x++) {
       if (this.grid[row][x] === number) {
@@ -31,6 +51,9 @@ export class SudokuBacktracker {
     return false;
   }
 
+  /**
+   * Checks if a number is allowed in a given column.
+   */
   private usedInColumn(column, number): boolean {
     for (let y = 0; y < 9; y++) {
       if (this.grid[y][column] === number) {
@@ -40,6 +63,9 @@ export class SudokuBacktracker {
     return false;
   }
 
+  /**
+   * Checks if a number is allowed in a given square.
+   */
   private usedInSquare(row, column, number): boolean {
     row -= row % 3;
     column -= column % 3;
@@ -54,38 +80,47 @@ export class SudokuBacktracker {
     return false;
   }
 
+  /**
+   * Checks if a given number can be placed in a row/column.
+   */
   private isLocationSafe(row, column, number): boolean {
     return !this.usedInColumn(column, number) 
         && !this.usedInRow(row, number) 
         && !this.usedInSquare(row, column, number);
   }
 
+  /**
+   * Recursively solves the sudoku. This returns true if the sudoku is solvable
+   * and false if there is no solution possible.
+   */
   solve(): boolean {
     this.iterations++;
 
-    let [row, column] = this.findEmptyLocation();
+    // Find the next empty cell
+    let [row, column] = this.findEmptyCell();
+    // If no empty cell was found then the sudoku has been solved
     if (row === -1 && column === -1) {
       return true;
     }
 
+    // Try numbers from 1 to 9
     for (let number = 1; number <= 9; number++) {
+      // Make sure the location is save for the current number
       if (this.isLocationSafe(row, column, number)) {
+        // Seems good! Store the number in the grid
         this.grid[row][column] = number;
+
+        // Recursively try the next cell with numbers from 1 to 9
+        // If it returns true, the sudoku has been solved
         if (this.solve()) {
           return true;
         }
+        
+        // Looks like we were wrong, revert back and try again
         this.grid[row][column] = 0;
       }
     }
-
+  
     return false;
-  }
-
-  get sudoku() {
-    return this.grid;
-  }
-
-  get neededIterations() {
-    return this.iterations;
   }
 }
