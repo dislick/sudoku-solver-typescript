@@ -1,6 +1,10 @@
 /// <reference path="../typings/index.d.ts" />
+
 import { SudokuBacktracker } from './sudoku-backtracker';
 
+/**
+ * Prints a sudoku grid to stdout, not needed for the actual algorithm.
+ */
 const printSudoku = (grid: number[][]) => {
   for (let x = 0; x < 9; x++) {
     if (x === 0) {
@@ -21,6 +25,10 @@ const printSudoku = (grid: number[][]) => {
   }
 }
 
+// Define a sudoku with a few numbers filled in.
+// Fun fact: According to The Telegraph this is the hardest sudoku in the world,
+// read more here:
+// http://www.telegraph.co.uk/news/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html
 let grid = [
   [8,0,0,0,0,0,0,0,0],
   [0,0,3,6,0,0,0,0,0],
@@ -33,13 +41,18 @@ let grid = [
   [0,9,0,0,0,0,4,0,0]
 ];
 
+// Print the unsolved sudoku
 printSudoku(grid);
 
+// Load the unsolved sudoku into the backtracker
 let backtracker = new SudokuBacktracker(grid);
+
+// Solve the sudoku and measure how long it took
 console.time('Solve Duration');
 let isSolvable = backtracker.solve();
 console.timeEnd('Solve Duration');
 
+// Print the solved sudoku if possible
 if (isSolvable) {
   printSudoku(backtracker.sudoku);
   console.log('Iterations:', backtracker.neededIterations);
