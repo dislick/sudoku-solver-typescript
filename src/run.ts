@@ -54,8 +54,8 @@ console.timeEnd('Solve Duration');
 
 // Print the solved sudoku if possible
 if (isSolvable) {
-  printSudoku(backtracker.sudoku);
   console.log('Iterations:', backtracker.neededIterations);
+  printSudoku(backtracker.sudoku);  
 } else {
   console.log('No solution found');
 }
