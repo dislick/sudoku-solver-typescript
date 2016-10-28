@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-This is a sudoku solver using a backtracking algorithm. It is written in TypeScript and runs in every JavaScript environment. Please note that it runs ~2.5 times faster when compiling to ES5 because of the destructuring assignment.
+This is a sudoku solver using a backtracking algorithm. It is written in TypeScript and runs in every JavaScript environment. Please note that it runs ~2.5 times faster when compiling to ES5 because of a destructuring assignment.
 
 ## Run
 
