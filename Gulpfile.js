@@ -23,6 +23,10 @@ gulp.task('typescript', ['clean'], function() {
     .pipe(gulp.dest(config.dest));
 });
 
+gulp.task('build', function() {
+  gulp.start('typescript');
+});
+
 gulp.task('default', ['clean'], function() {
   gulp.start('typescript');
   gulp.watch([
