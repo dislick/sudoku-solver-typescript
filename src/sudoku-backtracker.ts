@@ -105,7 +105,7 @@ export class SudokuBacktracker {
 
     // Try numbers from 1 to 9
     for (let number = 1; number <= 9; number++) {
-      // Make sure the location is save for the current number
+      // Make sure the location is safe for the current number
       if (this.isLocationSafe(row, column, number)) {
         // Seems good! Store the number in the grid
         this.grid[row][column] = number;
