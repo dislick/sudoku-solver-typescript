@@ -6,6 +6,10 @@ import { SudokuBacktracker } from './sudoku-backtracker';
  * Prints a sudoku grid to stdout, not needed for the actual algorithm.
  */
 const printSudoku = (grid: number[][]) => {
+  const getChar = (char) => {
+    return char > 0 ? char.toString() : ' ';
+  }
+  
   for (let x = 0; x < 9; x++) {
     if (x === 0) {
       console.log(Array(24).join('-'));
@@ -13,9 +17,9 @@ const printSudoku = (grid: number[][]) => {
     let out = '';
     for (let y = 0; y < 9; y++) {
       if ((y + 1) % 3 === 0 && y !== 0) {
-        out += grid[x][y] + ' | ';
+        out += getChar(grid[x][y]) + ' | ';
       } else {
-        out += grid[x][y] + ' ';
+        out += getChar(grid[x][y]) + ' ';
       }
     }
     console.log(out);
