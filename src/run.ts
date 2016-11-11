@@ -36,7 +36,7 @@ const printSudoku = (grid: number[][]) => {
 // read more here:
 // http://www.telegraph.co.uk/news/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html
 let grid = [
-  [8,0,0,0,0,0,0,0,0],
+  [8,8,0,0,0,0,0,0,0],
   [0,0,3,6,0,0,0,0,0],
   [0,7,0,0,9,0,2,0,0],
   [0,5,0,0,0,7,0,0,0],
@@ -55,13 +55,14 @@ let backtracker = new SudokuBacktracker(grid);
 
 // Solve the sudoku and measure how long it took
 console.time('Solve Duration');
-let isSolvable = backtracker.solve();
+let solvedSudoku = backtracker.solve();
 console.timeEnd('Solve Duration');
+console.log('Iterations:', backtracker.neededIterations);
 
 // Print the solved sudoku if possible
-if (isSolvable) {
-  console.log('Iterations:', backtracker.neededIterations);
-  printSudoku(backtracker.sudoku);  
+// If solvedSudoku is false then the sudoku was not impossible to solve.
+if (solvedSudoku) {  
+  printSudoku(<number[][]>solvedSudoku);  
 } else {
   console.log('No solution found');
 }

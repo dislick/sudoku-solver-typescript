@@ -93,7 +93,7 @@ export class SudokuBacktracker {
    * Recursively solves the sudoku. This returns true if the sudoku is solvable
    * and false if there is no solution possible.
    */
-  solve(): boolean {
+  solve(): boolean | number[][] {
     this.iterations++;
 
     // Find the next empty cell
@@ -113,7 +113,7 @@ export class SudokuBacktracker {
         // Recursively try the next cell with numbers from 1 to 9
         // If it returns true, the sudoku has been solved
         if (this.solve()) {
-          return true;
+          return this.grid;
         }
         
         // Looks like we were wrong, revert back and try again

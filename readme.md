@@ -10,9 +10,7 @@ import { SudokuBacktracker } from './sudoku-backtracker';
 let grid = [[1, 2, 3, 4, 5, 6, 7, 8, 9], ...];
 
 let backtracker = new SudokuBacktracker(grid);
-let isSolvable = backtracker.solve();
-
-// solved sudoku can now be found in `backtracker.sudoku`
+let solvedSudoku = backtracker.solve();
 ```
 
 ## Run
@@ -22,6 +20,13 @@ npm install
 gulp build
 node dest/run.js
 ```
+
+## Test
+
+```
+gulp test
+```
+
 
 ### Output
 
