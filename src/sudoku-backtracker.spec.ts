@@ -86,4 +86,24 @@ describe('SudokuBacktracker', () => {
       expect(backtracker.usedInColumn(3, 6)).to.equal(false);
     });
   });
+
+  describe('.usedInSquare()', () => {
+    it('should return true if the number is used in a given square', () => {
+      let grid = [
+        [0,0,0, 0,0,0, 0,0,0],
+        [0,1,0, 0,0,0, 0,0,0],
+        [0,0,0, 0,0,0, 0,0,0],
+
+        [0,0,0, 0,0,0, 0,0,0],
+        [0,0,0, 0,0,0, 0,0,0],
+        [0,0,0, 0,0,0, 0,0,0],
+
+        [0,0,0, 0,0,0, 0,0,0],
+        [0,0,0, 0,0,0, 0,0,0],
+        [0,0,0, 0,0,0, 0,0,0],
+      ];
+      let backtracker = new SudokuBacktracker(grid);
+      expect(backtracker.usedInSquare(1, 1, 1)).to.equal(true);
+    });
+  });
 });
