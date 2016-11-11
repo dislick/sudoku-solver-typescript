@@ -13,6 +13,12 @@ let backtracker = new SudokuBacktracker(grid);
 let solvedSudoku = backtracker.solve();
 ```
 
+## Test
+
+```
+gulp test
+```
+
 ## Run
 
 ```
@@ -20,13 +26,6 @@ npm install
 gulp build
 node dest/run.js
 ```
-
-## Test
-
-```
-gulp test
-```
-
 
 ### Output
 
