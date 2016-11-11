@@ -9,9 +9,12 @@
   "author": "Patrick Muff",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
+    "gulp-mocha": "^3.0.1",
     "gulp-typescript": "^3.1.0",
+    "mocha": "^3.1.2",
     "typescript": "^2.0.6"
   },
   "dependencies": {

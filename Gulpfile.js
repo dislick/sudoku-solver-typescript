@@ -1,10 +1,13 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var typescript = require('gulp-typescript');
+var mocha = require('gulp-mocha');
 
 var config = {
-  src: 'src/**/*.ts',
-  dest: 'dest'
+  src: [
+    'src/**/*.ts',    
+  ],
+  dest: 'dest',
 };
 
 gulp.task('clean', function() {
@@ -24,6 +27,11 @@ gulp.task('typescript', ['clean'], function() {
 
 gulp.task('build', function() {
   gulp.start('typescript');
+});
+
+gulp.task('test', ['typescript'], function() {
+  gulp.src(config.dest + '/**/*.spec.js')
+    .pipe(mocha({ reporter: 'spec' }))
 });
 
 gulp.task('default', ['clean'], function() {
