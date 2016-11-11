@@ -25,7 +25,7 @@ export class SudokuBacktracker {
    * array where the first entry represents the row (x) and the second entry the
    * column (y).
    */
-  private findEmptyCell(): number[] {
+  findEmptyCell(): number[] {
     let coords = [-1, -1];
     for (let x = 0; x < 9; x++) {
       for (let y = 0; y < 9; y++) {
@@ -42,7 +42,7 @@ export class SudokuBacktracker {
   /**
    * Checks if a number is allowed to be used in a given row.
    */
-  private usedInRow(row, number): boolean {
+  usedInRow(row, number): boolean {
     for (let x = 0; x < 9; x++) {
       if (this.grid[row][x] === number) {
         return true;
@@ -54,7 +54,7 @@ export class SudokuBacktracker {
   /**
    * Checks if a number is allowed in a given column.
    */
-  private usedInColumn(column, number): boolean {
+  usedInColumn(column, number): boolean {
     for (let y = 0; y < 9; y++) {
       if (this.grid[y][column] === number) {
         return true;
@@ -66,7 +66,7 @@ export class SudokuBacktracker {
   /**
    * Checks if a number is allowed in a given square.
    */
-  private usedInSquare(row, column, number): boolean {
+  usedInSquare(row, column, number): boolean {
     row -= row % 3;
     column -= column % 3;
 
@@ -83,7 +83,7 @@ export class SudokuBacktracker {
   /**
    * Checks if a given number can be placed in a row/column.
    */
-  private isLocationSafe(row, column, number): boolean {
+  isLocationSafe(row, column, number): boolean {
     return !this.usedInColumn(column, number) 
         && !this.usedInRow(row, number) 
         && !this.usedInSquare(row, column, number);
