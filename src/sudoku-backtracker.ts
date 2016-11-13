@@ -90,8 +90,11 @@ export class SudokuBacktracker {
   }
 
   /**
-   * Recursively solves the sudoku. This returns true if the sudoku is solvable
-   * and false if there is no solution possible.
+   * Recursively solves the sudoku. Returns the solved sudoku grid
+   * if possible, or false if there is no solution possible.
+   * 
+   * Use `<number[][]>sudoku` to cast the output of this 
+   * method after you have made sure it is an array.
    */
   solve(): boolean | number[][] {
     this.iterations++;
