@@ -25,8 +25,8 @@ export class SudokuBacktracker {
    * array where the first entry represents the row (x) and the second entry the
    * column (y).
    */
-  findEmptyCell(): number[] {
-    let coords = [-1, -1];
+  findEmptyCell(): [number, number] {
+    let coords: [number, number] = [-1, -1];
     for (let x = 0; x < 9; x++) {
       for (let y = 0; y < 9; y++) {
         if (this.grid[x][y] === 0) {
