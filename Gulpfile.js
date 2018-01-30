@@ -1,21 +1,21 @@
-var gulp = require('gulp');
-var clean = require('gulp-clean');
-var typescript = require('gulp-typescript');
-var mocha = require('gulp-mocha');
+const gulp = require('gulp');
+const clean = require('gulp-clean');
+const typescript = require('gulp-typescript');
+const mocha = require('gulp-mocha');
 
-var config = {
+const config = {
   src: [
     'src/**/*.ts',    
   ],
   dest: 'dest',
 };
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   return gulp.src(config.dest, { allowEmpty: true })
     .pipe(clean());
 });
 
-gulp.task('typescript', gulp.series('clean', function() {
+gulp.task('typescript', gulp.series('clean', () => {
   return gulp.src(config.src)
     .pipe(typescript({
       module: 'commonjs',
@@ -27,12 +27,12 @@ gulp.task('typescript', gulp.series('clean', function() {
 
 gulp.task('build', gulp.series('typescript'));
 
-gulp.task('test', gulp.series('typescript', function() {
+gulp.task('test', gulp.series('typescript', () => {
   return gulp.src(config.dest + '/**/*.spec.js')
     .pipe(mocha({ reporter: 'spec' }))
 }));
 
-gulp.task('default', gulp.series('clean', 'typescript', function() {
+gulp.task('default', gulp.series('clean', 'typescript', () => {
   gulp.watch([
     config.src
   ], gulp.series('typescript'));

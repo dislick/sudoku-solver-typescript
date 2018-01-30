@@ -1,10 +1,10 @@
 {
   "name": "sudoku-backtracking-typescript",
   "version": "1.0.0",
-  "description": "",
+  "description": "Solves sudokus",
   "main": "sudoku.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "author": "Patrick Muff",
   "license": "ISC",
